@@ -34,18 +34,18 @@ docker run -p 8080:8080 search-api:latest
 ### Test the API
 
 
-| Required Parameters       |
-| _________________________ |
-| Param name | Param value  |
-| ________   | ___________  |
-| logfile    |  /var/log/app.log     |
+#### Required Parameters
+
+| Param name | Param value |
+| --- | --- |
+| logfile    |  /var/log/app.log |
 |  q         |  ERROR       |
 
 
-| Optional Parameters       |
-| _________________________ |
+#### Optional Parameters 
+
 | Param name | Param value  |
-| ________   | __________   |
+| --- | --- |
 | page         |  1         |
 | limit        |  5         |
 | searchMode   | fulltext or regex |
