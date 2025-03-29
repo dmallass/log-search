@@ -115,8 +115,6 @@ func GenerateLog(filename string) error {
 	}
 	defer file.Close()
 
-	rand.Seed(time.Now().UnixNano())
-
 	var totalSize int64 = 0
 	targetSize := int64(1024 * 1024 * 1024) // 1 GB
 	for totalSize < targetSize {
@@ -130,19 +128,26 @@ func GenerateLog(filename string) error {
 	}
 	fmt.Println("1GB+ log file with error lines generated successfully.")
 
-	cmd := exec.Command("mv", tmpFile, finalFile)
-	err = cmd.Run()
-	if err != nil {
-		fmt.Println("Error moving file:", err)
-		return err
+	err = os.Rename(tmpFile, finalFile)
+	if err == nil {
+		return nil
 	}
 
-	cmd = exec.Command("chmod", "644", finalFile)
-	err = cmd.Run()
-	if err != nil {
-		fmt.Println("Error setting permissions:", err)
-		return err
-	}
+	if os.IsPermission(err) {
+		fmt.Println("permission denied to move file with current user: trying with elevated privilages")
+		cmd := exec.Command("sudo", "mv", tmpFile, finalFile)
+		err = cmd.Run()
+		if err != nil {
+			fmt.Println("Error moving file:", err)
+			return err
+		}
 
+		cmd = exec.Command("chmod", "644", finalFile)
+		err = cmd.Run()
+		if err != nil {
+			fmt.Println("Error setting permissions:", err)
+			return err
+		}
+	}
 	return nil
 }

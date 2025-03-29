@@ -56,7 +56,7 @@ type LogLine struct {
 	timestamp time.Time
 }
 
-func runRipgrep(logfile string, searchQuery string, searchMode string) ([]string, error) {
+func RunRipgrep(logfile string, searchQuery string, searchMode string) ([]string, error) {
 	threads := fmt.Sprintf("%d", runtime.NumCPU())
 
 	if searchMode != "regex" {
@@ -191,7 +191,7 @@ func searchLogfileHandler(c *gin.Context) {
 		return
 	}
 
-	results, err := runRipgrep(validatedPath, searchTerm, searchMode)
+	results, err := RunRipgrep(validatedPath, searchTerm, searchMode)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
