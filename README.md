@@ -1,6 +1,6 @@
-# LOG COLLECTION
+# Log Search
 
-## INSTALLATION AND SETUP
+## Installation and Setup
 
 ```
 git clone git@github.com:dmallass/log-search.git
