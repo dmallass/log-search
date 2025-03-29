@@ -1,4 +1,4 @@
-### LOG COLLECTION
+# LOG COLLECTION
 
 ## INSTALLATION AND SETUP
 
@@ -10,8 +10,9 @@ cd log-search
 ### Install Dependencies
 
 Make sure you have Go (>=1.21) and ripgrep installed:
-```
+
 [Install Go>=1.21](https://go.dev/doc/install)
+```
 brew install ripgrep
 go get -u github.com/gin-gonic/gin
 go mod tidy
@@ -81,7 +82,7 @@ When run in a container, virtualization is affecting the search performance. Whe
 
 REST api endpoint doesn't check if the user requesting the search has the correct privilages. 
 
-1. JWT Tokens for authentication
-```Authentication``` header will include ```<Bearer <JWTToken>> ``` . Application can have a authtication middleware that will validate the token before allowing to access the endpoint. if token is missing or invalid, a 401 response will be returned. 
+1. JWT Token can be used for authentication.
+```Authentication``` header will include ```<Bearer JWTToken> ``` . Application can have a authtication middleware that will validate the token before allowing to access the endpoint. if token is missing or invalid, a 401 response will be returned. 
 
 2. Check user's privilages for directory access. make sure the user requesting for logs has the correct privilages to access the directory. 
