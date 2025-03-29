@@ -8,8 +8,6 @@ import (
 	"time"
 )
 
-// const urls = ["https://server1.us-central1.com/onboarding/v1/shoppers", "https://server1.us-central1.com/onboarding/v1/shoppers", "https://www.twitter.com"]
-
 func randomIP() string {
 	return fmt.Sprintf("%d.%d.%d.%d", rand.Intn(255), rand.Intn(255), rand.Intn(255), rand.Intn(255))
 }

@@ -7,22 +7,6 @@ git clone git@github.com:dmallass/log-search.git
 cd log-search
 ```
 
-## Install dependencies 
-
-Make sure you have Go (>=1.21) and ripgrep installed:
-
-```
-go mod tidy
-
-```
-
-## Run the API
-
-```
-go build -o .
-./cribl_take_home
-```
-
 ## DOCKER SETUP
 
 ```
@@ -32,7 +16,6 @@ docker run -p 8080:8080 search-api:latest
 ```
 
 ### Test the API
-
 
 #### Required Parameters
 

@@ -50,33 +50,11 @@ func ValidateFilePath(path string) (string, error) {
 	return absPath, nil
 }
 
-// ValidateSearchTerms checks if search terms are safe
-func ValidateSearchTerms(terms []string) error {
-	if len(terms) == 0 {
-		return fmt.Errorf("at least one search term is required")
-	}
-
-	for _, term := range terms {
-		if len(term) > 1000 {
-			return fmt.Errorf("search term too long (max 1000 characters)")
-		}
-	}
-
-	return nil
-}
-
 // LogLine represents a parsed log line with its timestamp
 type LogLine struct {
 	line      string
 	timestamp time.Time
 }
-
-// ByTimestamp implements sort.Interface for []LogLine based on timestamp
-type ByTimestamp []LogLine
-
-func (a ByTimestamp) Len() int           { return len(a) }
-func (a ByTimestamp) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a ByTimestamp) Less(i, j int) bool { return a[i].timestamp.After(a[j].timestamp) }
 
 func runRipgrep(logfile string, searchQuery string, searchMode string) ([]string, error) {
 	threads := fmt.Sprintf("%d", runtime.NumCPU())
@@ -150,7 +128,9 @@ func runRipgrep(logfile string, searchQuery string, searchMode string) ([]string
 	}
 
 	// Sort results by timestamp in reverse order
-	sort.Sort(ByTimestamp(allResults))
+	sort.Slice(allResults, func(i, j int) bool {
+		return allResults[i].timestamp.After(allResults[j].timestamp)
+	})
 
 	// Convert back to string slice
 	var sortedLines []string
