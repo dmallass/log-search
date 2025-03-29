@@ -36,7 +36,7 @@ docker run -p 8080:8080 search-api:latest
 
 #### Required Parameters
 
-| Param name | Param value |
+| Name | Value |
 | --- | --- |
 | logfile    |  /var/log/app.log |
 |  q         |  ERROR       |
@@ -44,7 +44,7 @@ docker run -p 8080:8080 search-api:latest
 
 #### Optional Parameters 
 
-| Param name | Param value  |
+| Name | Value  |
 | --- | --- |
 | page         |  1         |
 | limit        |  5         |
