@@ -116,7 +116,7 @@ func GenerateLog(filename string) error {
 	defer file.Close()
 
 	var totalSize int64 = 0
-	targetSize := int64(1024 * 1024 * 1024) // 1 GB
+	targetSize := int64(1024 * 1024 * 1024 * 10) // 1 GB
 	for totalSize < targetSize {
 		logEntry := generateLogEntry()
 		n, err := file.WriteString(logEntry)
@@ -126,7 +126,7 @@ func GenerateLog(filename string) error {
 		}
 		totalSize += int64(n)
 	}
-	fmt.Println("1GB+ log file with error lines generated successfully.")
+	fmt.Printf("%dGB+ log file with error lines generated successfully.\n", targetSize/(1024*1024*1024))
 
 	err = os.Rename(tmpFile, finalFile)
 	if err == nil {
