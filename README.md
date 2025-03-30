@@ -69,7 +69,7 @@ curl "http://localhost:8080/search?page=1&limit=5&logfile=/var/log/app.log&q=.*/
 | binary executable | 1GB |0.8s - 1.8s | MacOS M1 Pro (darwin arm64 arch) | 8 CPU cores | 16 GB
 | Containerized application (Docker) | 1GB |2s - 3s | alpine linux | 8 CPU Cores | 14 GB
 | binary executable | 10GB |20s - 38s | MacOS M1 Pro (darwin arm64 arch) | 8 CPU cores | 16 GB
-| Containerized application (Docker) | 10GB | 2m25s  | alpine linux | 8 CPU Cores | 14 GB
+| Containerized application (Docker) | 10GB | 1m50s - 2m25s  | alpine linux | 8 CPU Cores | 14 GB
 
 Adding additional ripgrep (rg) flags could improve the performance. With increasing log file size or complexity, considering the current performance of ripgrep for 1GB file, we could scale up the server resources cpu and memory.
 
