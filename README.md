@@ -37,7 +37,7 @@ docker run -p 8080:8080 search-api:latest
 
 #### Required Parameters
 
-| Name | Description | Value |
+| Name | Description | Example Value |
 | --- | --- |--- |
 | logfile    | file name to search for logs |  /var/log/app.log |
 |  q         |  search query. You can provide basic keyword/text or regex. If regex is given, add searchMode=regex |   ERROR    or .*/v1/candidates   |
@@ -45,7 +45,7 @@ docker run -p 8080:8080 search-api:latest
 
 #### Optional Parameters 
 
-| Name | Description | Value  |
+| Name | Description | Example Value  |
 | --- | --- |--- |
 | page    |  page number     |  1   |
 | limit     | Number of records to retrieve   |  5  |
