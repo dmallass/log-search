@@ -45,10 +45,10 @@ docker run -p 8080:8080 search-api:latest
 
 #### Optional Parameters 
 
-| Name | Value  |
-| --- | --- |
-| page         |  1         |
-| limit        |  5         |
+| Name | Description | Value  |
+| --- | --- |--- |
+| page    |  page number     |  1   |
+| limit     | Number of records to retrieve   |  5  |
 
 #### full text search
 ```
